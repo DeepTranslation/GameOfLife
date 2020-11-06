@@ -9,9 +9,9 @@ public class Map {
         for (int x = 0; x < this.map.length; x++) {
             Arrays.fill(this.map[x], false);
         }
-        this.map[2][3]=true;
-        this.map[4][7]=true;
-        System.out.print(this.map[3][4]);
+//        this.map[2][3]=true;
+//        this.map[4][7]=true;
+//        System.out.print(this.map[3][4]);
     }
     
     public int getWidth() {

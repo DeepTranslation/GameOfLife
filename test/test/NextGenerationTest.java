@@ -2,27 +2,34 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Model.Map;
 
 public class NextGenerationTest {
-private Map testMap;
+    private Map testMap;
     
     @BeforeEach
     public void mapInit() {
-        this.testMap = new Map(5,5);
+        this.testMap = new Map(3,3);
     }
     
     @Test
-    public void mapInitTest() { 
-        testMap.setPixel(1, 1);
-        testMap.setPixel(1, 2);
-        testMap.setPixel(2, 1);
-        testMap.setPixel(2, 2);
+    public void setMapTest() { 
        
-        assertEquals(false, this.testMap.getPixel(x, y));
+        char[][] testArray = {
+                {'.','.','.'},
+                {'.','X','.'},
+                {'.','.','.'}
+            };
+        
+        
+        testMap.setMap(testArray);
+        char[][] getArray = testMap.getMap();
+        assertEquals(true, Arrays.equals(getArray,testArray));
     }
     
     
