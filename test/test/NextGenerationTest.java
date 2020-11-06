@@ -12,14 +12,16 @@ private Map testMap;
     
     @BeforeEach
     public void mapInit() {
-        this.testMap = new Map(10,10);
+        this.testMap = new Map(5,5);
     }
     
     @Test
     public void mapInitTest() { 
-        
-        int x= 0;
-        int y=0;
+        testMap.setPixel(1, 1);
+        testMap.setPixel(1, 2);
+        testMap.setPixel(2, 1);
+        testMap.setPixel(2, 2);
+       
         assertEquals(false, this.testMap.getPixel(x, y));
     }
     
