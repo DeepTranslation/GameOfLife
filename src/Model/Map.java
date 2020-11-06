@@ -18,8 +18,8 @@ public class Map {
         return map.length;
     }
     
-    public int getWidth() {
-        return map.length;
+    public int getHeight() {
+        return map[1].length;
     }
     
     public void drawMap() {
@@ -32,11 +32,9 @@ public class Map {
     }
     
     public boolean getPixel(int x, int y) {
-        if (x<= getSize() ) {
+        
             return this.map[x][y];
-        } 
-        return false;//throws exception
-    }
+     }
     
     public void setPixel(int x, int y) {
         
