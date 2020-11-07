@@ -10,9 +10,10 @@ import javax.swing.event.ListDataListener;
 
 
 public class MainFrame extends JFrame{  
-    private Canvas canvas;
+    private CellCanvas canvas;
     private JLabel label;
     private Panel controlPanel;
+    private Panel viewPanel;
     private JButton startButton;
     private JButton stopButton;
     private JTextArea textArea;
@@ -32,6 +33,7 @@ public class MainFrame extends JFrame{
         
         setLayout(new BorderLayout());
         
+        // Main View Panel
         textArea = new JTextArea(
                 "..........\n" +
                 "..........\n" +
@@ -49,27 +51,37 @@ public class MainFrame extends JFrame{
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         
-//        canvas = new Canvas();
-//        canvas.setBackground(Color.BLACK);
+        canvas = new CellCanvas();
+        canvas.setBackground(Color.BLACK);
+        
+        viewPanel = new Panel();
+        viewPanel.setLayout(new GridLayout(1,2));
+        viewPanel.add(textArea,0,0);
+        viewPanel.add(canvas,0,1);
+        
+        // Control Panel
         label = new JLabel("Info");
-
+        startButton=new JButton("Start");
+        // startButton.addMouseListener( new MyMouseListener());
+        stopButton=new JButton("Stop");
+ 
         controlPanel = new Panel();
         controlPanel.setLayout(new GridLayout(1,3));
         controlPanel.add(label,0,0);
-        
-        
-        startButton=new JButton("Start");
-       // startButton.addMouseListener( new MyMouseListener());
-        stopButton=new JButton("Stop");
-        
         controlPanel.add(startButton,0,1);
+        controlPanel.add(stopButton,0,2);
         
-        controlPanel.add(stopButton,0,1);
         
-//        add(canvas, BorderLayout.CENTER);
-        add(textArea, BorderLayout.CENTER);
+        
+
+        add(viewPanel,BorderLayout.CENTER);
         add(controlPanel,BorderLayout.SOUTH);
         setVisible(true);
+    }
+    
+    public void drawCanvasGrid(int height, int width, char[][] mapArray) {
+        canvas.init(height, width, mapArray);
+        canvas.drawGrid();
     }
     
     public void setStartButtonListener(MouseListener listener) {
