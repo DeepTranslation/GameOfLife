@@ -16,7 +16,7 @@ public class UI  {
     }
     
     public void launch() {
-        //MainFrame mainFrame = new MainFrame();
+        
         mainFrame.setVisible(true);
         
         char[][] startArray = {
