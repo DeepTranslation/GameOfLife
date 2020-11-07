@@ -1,11 +1,12 @@
 package Model;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class GameOfLife {
 
     public static void main(String[] args) {
-        
+        /*
         
         Map myMap = new Map(5,10);
        
@@ -52,6 +53,29 @@ public class GameOfLife {
             System.out.println();
         }
         System.out.println(Arrays.deepEquals(testArray2,testArray));
+        
+        */
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        Map myMap = new Map(5,5);
+        char[][] startArray = {
+                {'.','.','.','.','.'},
+                {'.','.','X','.','.'},
+                {'.','.','X','.','.'},
+                {'.','.','X','.','.'},
+                {'.','.','.','.','.'}
+            };
+        myMap.setMap(startArray);
+        while (true) {
+            
+            input = scanner.nextLine();
+            if (input.equals("o")) {
+                break;
+            }
+            
+            myMap.nextGeneration();
+            myMap.drawMap();
+        }
     }
 
 }

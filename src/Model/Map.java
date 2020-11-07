@@ -25,7 +25,7 @@ public class Map {
        int neighbours;
        for  (int row = 0; row< getHeight(); row++) {
            for (int column = 0; column < getWidth(); column++  ) {
-               neighbours = countNeighbours(column, row);
+               neighbours = countNeighbours(row, column );
                
 //               Any live cell with two or three live neighbours survives.
                if (getPixel(row,column)&& (neighbours==2 || neighbours == 3)) {
@@ -39,7 +39,12 @@ public class Map {
                ; //map initialised to false 
            }
        }
+//       nextMap.setPixel(1,1);
+//       nextMap.setPixel(1,2);
+//       nextMap.setPixel(2,1);
+//       nextMap.setPixel(2,2);
        this.map = nextMap.map;
+       
        
     }
     
@@ -68,9 +73,9 @@ public class Map {
             endColumn = column+1;
         }
 
-        for (int currentRow = startRow; row<= endRow; row++) {
-            for (int currentColumn = endColumn; column <= startColumn; column++  ) {
-                if (!(currentRow==row) && !(currentColumn==column)) {
+        for (int currentRow = startRow; currentRow<= endRow; currentRow++) {
+            for (int currentColumn = startColumn; currentColumn <= endColumn; currentColumn++  ) {
+                if (!((currentRow==row) && (currentColumn==column))) {
                     if (getPixel(currentRow,currentColumn)) {
                         count++;
                     }
