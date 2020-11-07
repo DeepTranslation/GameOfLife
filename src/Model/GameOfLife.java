@@ -1,5 +1,7 @@
 package Model;
 
+import View.*;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -55,6 +57,10 @@ public class GameOfLife {
         System.out.println(Arrays.deepEquals(testArray2,testArray));
         
         */
+        
+        MainFrame UI = new MainFrame();
+        UI.setVisible(true);
+        
         Scanner scanner = new Scanner(System.in);
         String input;
         Map myMap = new Map(10,10);

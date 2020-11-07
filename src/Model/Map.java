@@ -6,6 +6,12 @@ public class Map {
     private int height;
     private int width;
     
+    /**
+     * Map Constructor,
+     * coordinates sorted in matrix style, row first, column second
+     * @param   map height (one unit per organism)
+     *                 map width   (one unit per organism)
+     */
     public  Map(int height, int width ) {
         this.map =  new boolean[height][width];
         for (int y = 0; y < this.map.length; y++) {
@@ -20,6 +26,10 @@ public class Map {
 //        System.out.print(this.map[3][4]);
     }
     
+
+    /**
+     * Calculate the next generation of the map and update the map accordingly
+     */
     public void nextGeneration() {
        Map nextMap = new Map(getHeight(),getWidth());
        int neighbours;
@@ -48,6 +58,12 @@ public class Map {
        
     }
     
+    /**
+     * Counts number of neighbouring organisms of one cell
+     * @param row 
+     * @param column
+     * @return number of neighbours
+     */
     private int countNeighbours(int row, int column) {
         int count = 0;
         int startRow, startColumn;
@@ -83,19 +99,28 @@ public class Map {
             }
             
         }
-        
-        
         return count;
     }
     
+    /**
+     * get map width
+     * @return map width
+     */
     public int getWidth() {
         return width;
     }
     
+    /**
+     * get map height
+     * @return map height
+     */
     public int getHeight() {
         return height;
     }
     
+    /**
+     * TODO: move into View
+     */
     public void drawMap() {
         char output;
         for (int row = 0; row< getHeight(); row++) {
@@ -112,30 +137,56 @@ public class Map {
         }
     }
     
+    /**
+     * Returns the set status of an individual cell
+     */
     public boolean getPixel(int row, int column) {
         
             return this.map[row][column];
      }
     
+    /** 
+     * sets one individual cell to true
+     */
     public void setPixel(int row, int column ) {
         
         this.map[row][column] = true;
     }
     
-    public char[][] getMap(){
-        char[][] outputMap = new char[getHeight()][getWidth()];
+    /**
+     * sets one individual cell to false
+     */
+    public void clearPixel(int row, int column) {
+        this.map[row][column] = false;
+    }
+    
+    
+    /**
+     * gets the whole map as a 2D Array
+     * @return 2D Array of char
+     *                  X = cell alive
+     *                  . = cell dead
+     */
+    public char[][] getMapArray(){
+        char[][] outputMapArray = new char[getHeight()][getWidth()];
         for (int row = 0; row< getHeight(); row++) {
             for (int column = 0; column < getWidth(); column++) {
                 if (this.map[row][column]) {
-                     outputMap[row][column] = 'X';
+                    outputMapArray[row][column] = 'X';
                 } else {
-                    outputMap[row][column] = '.';
+                    outputMapArray[row][column] = '.';
                 }
             }
         }
-        return outputMap;
+        return outputMapArray;
     }
     
+    /**
+     * sets the whole map to the parameter values
+     * @param inputMap = 2D Array
+     *                  X = cell alive
+     *                  . = cell dead
+     */
     public void setMap(char[][] inputMap){
         
         for (int row = 0; row< getHeight(); row++) {
@@ -150,8 +201,5 @@ public class Map {
         
     }
     
-    public void clearPixel(int row, int column) {
-        this.map[row][column] = false;
-    }
-    
+
 }
