@@ -1,9 +1,14 @@
 package Model;
 
+import View.*;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameOfLife {
+    
 
     public static void main(String[] args) {
         /*
@@ -55,9 +60,15 @@ public class GameOfLife {
         System.out.println(Arrays.deepEquals(testArray2,testArray));
         
         */
+        /*
+        
+        MainFrame UI = new MainFrame();
+        UI.setVisible(true);
+        
+        
         Scanner scanner = new Scanner(System.in);
         String input;
-        Map myMap = new Map(10,10);
+        myMap = new Map(10,10);
         char[][] startArray = {
                 {'.','X','.','.','.','.','.','.','.','.'},
                 {'.','.','X','.','.','.','.','.','.','.'},
@@ -80,7 +91,14 @@ public class GameOfLife {
             
             myMap.nextGeneration();
             myMap.drawMap();
-        }
-    }
+            char[][] newArray = myMap.getMapArray();
+            UI.drawMap(newArray);
+            */
+            UI ui = new UI();
+            ui.launch();
+     }
+    
+    
+    
 
 }

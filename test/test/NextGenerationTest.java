@@ -27,7 +27,7 @@ public class NextGenerationTest {
                 {'.','.','.','.','.'}
             };
         testMap.setMap(testArray);
-        char[][] getArray = testMap.getMap();
+        char[][] getArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(getArray,testArray));
     }
     
@@ -49,7 +49,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -71,7 +71,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -93,7 +93,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -115,7 +115,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     @Test
@@ -136,7 +136,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArrayArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     @Test
@@ -157,7 +157,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArrayArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -179,7 +179,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArrayArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -201,7 +201,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArrayArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -223,7 +223,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -245,7 +245,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -267,7 +267,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -289,7 +289,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -311,7 +311,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
@@ -333,7 +333,7 @@ public class NextGenerationTest {
             };
         testMap.setMap(startArray);
         testMap.nextGeneration();
-        char[][] resultArray = testMap.getMap();
+        char[][] resultArray = testMap.getMapArray();
         assertEquals(true, Arrays.deepEquals(resultArray,targetArray));
     }
     
