@@ -2,8 +2,12 @@ package View;
 
 
 import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.*;  
+import javax.swing.*;
+import javax.swing.event.ListDataListener;
+
+
 
 public class MainFrame extends JFrame{  
     private Canvas canvas;
@@ -55,9 +59,11 @@ public class MainFrame extends JFrame{
         
         
         JButton startButton=new JButton("Start");
+       // startButton.addMouseListener( new MyMouseListener());
         JButton stopButton=new JButton("Stop");
         
         controlPanel.add(startButton,0,1);
+        
         controlPanel.add(stopButton,0,1);
         
 //        add(canvas, BorderLayout.CENTER);
@@ -66,16 +72,20 @@ public class MainFrame extends JFrame{
         setVisible(true);
     }
     
-        /*JFrame mainFrame=new JFrame();//creating instance of JFrame  
-        mainFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
-        JButton button=new JButton("Start");//creating instance of JButton  
-        //b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
-        mainFrame. .setLayout(new BorderLayout());
-        mainFrame.add(b);//adding button in JFrame  
-                  
-        mainFrame.setSize(400,500);//400 width and 500 height  
-        mainFrame.setLayout(null);//using no layout managers  
-        mainFrame.setVisible(true);//making the frame visible  
-      */
+    public void setStartButtonListener(MouseListener listener) {
+        startButton.addMouseListener( listener);
+    }
+    
+     public void drawMap(char[][] mapArray) {
+         
+         StringBuilder text = new StringBuilder();
+         for (int row = 0; row<mapArray.length; row++) {
+             text.append(String.valueOf(mapArray[row])+"\n");
+         }
+         textArea.setText(text.toString());
+//         textArea.update(g);
+         
+     }
+     
+     
 }  
