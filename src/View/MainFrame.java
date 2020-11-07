@@ -10,7 +10,7 @@ import javax.swing.event.ListDataListener;
 
 
 public class MainFrame extends JFrame{  
-    private Canvas canvas;
+    private CellCanvas canvas;
     private JLabel label;
     private Panel controlPanel;
     private Panel viewPanel;
@@ -51,7 +51,7 @@ public class MainFrame extends JFrame{
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         
-        canvas = new Canvas();
+        canvas = new CellCanvas();
         canvas.setBackground(Color.BLACK);
         
         viewPanel = new Panel();
@@ -73,11 +73,15 @@ public class MainFrame extends JFrame{
         
         
         
-//        add(canvas, BorderLayout.NORTH);
-//        add(textArea, BorderLayout.WEST);
+
         add(viewPanel,BorderLayout.CENTER);
         add(controlPanel,BorderLayout.SOUTH);
         setVisible(true);
+    }
+    
+    public void drawCanvasGrid(int height, int width, int drawRow, int drawColumn) {
+        canvas.init(height, width, drawRow,drawColumn);
+        canvas.drawGrid();
     }
     
     public void setStartButtonListener(MouseListener listener) {

@@ -8,11 +8,16 @@ import Model.Map;
 public class UI  {
     protected Map myMap;
     protected MainFrame mainFrame;
+    protected int drawRow ;
+    protected int drawColumn;
 
     public UI() {
         
         this.myMap = new Map(10,10);
         this.mainFrame = new MainFrame();
+        this.drawRow = 0;
+        this.drawColumn = 0;
+        
     }
     
     public void launch() {
@@ -35,6 +40,7 @@ public class UI  {
         mainFrame.drawMap(startArray);
         
         mainFrame.setStartButtonListener(new MyMouseListener());
+        mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),0,0);
         
         /*
         Scanner scanner = new Scanner(System.in);
@@ -83,6 +89,9 @@ public class UI  {
           //myMap.drawMap();
           char[][] newArray = myMap.getMapArray();
           mainFrame.drawMap(newArray);
+          drawRow++;
+          drawColumn++;
+          mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),drawRow,drawColumn);
       }
     }
     
