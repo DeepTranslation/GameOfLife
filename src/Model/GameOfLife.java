@@ -7,20 +7,20 @@ public class GameOfLife {
     public static void main(String[] args) {
         
         
-        Map myMap = new Map(10,10);
+        Map myMap = new Map(5,10);
        
         
         System.out.println(myMap.getPixel(3,4));
         myMap.drawMap();
         System.out.println("---------------------");
-        myMap.setPixel(5, 5);
+        myMap.setPixel(4, 7);
         myMap.setPixel(0, 7);
         char[][] mapArray = myMap.getMap();
         
 
-        for (int x =0; x<mapArray.length; x++) {
-            for (int y = 0; y<mapArray[0].length; y++) {
-                System.out.print(mapArray[x][y]);
+        for (int y =0; y<mapArray.length; y++) {
+            for (int x = 0; x<mapArray[0].length; x++) {
+                System.out.print(mapArray[y][x]);
             }
             System.out.println();
         }
@@ -32,18 +32,26 @@ public class GameOfLife {
                 {'.','X','X'},
                 {'.','.','.'}
             };
-        
-        
+        char[][] testArray2 = {
+                {'.','.','.'},
+                {'.','X','X'},
+                {'.','.','.'}
+            };
+        char[] testArray3 =  {'.','.','.', '.','X','X'};
+        char[] testArray4 =  {'.','.','.', '.','X','X'};
+        testMap.drawMap();
+        System.out.println("---------------------");
         testMap.setMap(testArray);
         testMap.drawMap();
+        System.out.println("---------------------");
         char[][] getArray = testMap.getMap();
-        for (int x =0; x<getArray.length; x++) {
-            for (int y = 0; y<getArray[0].length; y++) {
-                System.out.print(getArray[x][y]);
+        for (int row =0; row<getArray.length; row++) {
+            for (int column = 0; column<getArray[0].length; column++) {
+                System.out.print(getArray[row][column]);
             }
             System.out.println();
         }
-        System.out.println(Arrays.equals(getArray,testArray));
+        System.out.println(Arrays.deepEquals(testArray2,testArray));
     }
 
 }
