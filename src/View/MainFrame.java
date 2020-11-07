@@ -58,9 +58,9 @@ public class MainFrame extends JFrame{
         controlPanel.add(label,0,0);
         
         
-        JButton startButton=new JButton("Start");
+        startButton=new JButton("Start");
        // startButton.addMouseListener( new MyMouseListener());
-        JButton stopButton=new JButton("Stop");
+        stopButton=new JButton("Stop");
         
         controlPanel.add(startButton,0,1);
         
