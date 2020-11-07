@@ -20,27 +20,27 @@ public class MapTest {
     @Test
     public void mapInitTest() { 
         
-        int x= 0;
-        int y=0;
-        assertEquals(false, this.testMap.getPixel(x, y));
+        int row= 0;
+        int column=0;
+        assertEquals(false, this.testMap.getPixel(row, column));
     }
     
     
     @Test
     public void setAndClearPixelTest() { 
         
-        int x= 0;
-        int y=0;
-        testMap.setPixel(x, y);
-        assertEquals(true, testMap.getPixel(x, y));
-        testMap.clearPixel(x, y);
-        assertEquals(false, testMap.getPixel(x, y));
-        x= 3;
-        y=4;
-        testMap.setPixel(x, y);
-        assertEquals(true, testMap.getPixel(x, y));
-        testMap.clearPixel(x, y);
-        assertEquals(false, testMap.getPixel(x, y));
+        int row= 0;
+        int column=0;
+        testMap.setPixel(row, column);
+        assertEquals(true, testMap.getPixel(row, column));
+        testMap.clearPixel(row, column);
+        assertEquals(false, testMap.getPixel(row, column));
+        row= 3;
+        row=4;
+        testMap.setPixel(row, column);
+        assertEquals(true, testMap.getPixel(row, column));
+        testMap.clearPixel(row, column);
+        assertEquals(false, testMap.getPixel(row, column));
     }
     
     
