@@ -40,7 +40,7 @@ public class UI  {
         mainFrame.drawMap(startArray);
         
         mainFrame.setStartButtonListener(new MyMouseListener());
-        mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),0,0);
+        mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),null);
         
         /*
         Scanner scanner = new Scanner(System.in);
@@ -91,7 +91,7 @@ public class UI  {
           mainFrame.drawMap(newArray);
           drawRow++;
           drawColumn++;
-          mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),drawRow,drawColumn);
+          mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(), newArray);
       }
     }
     

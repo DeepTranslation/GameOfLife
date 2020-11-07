@@ -79,8 +79,8 @@ public class MainFrame extends JFrame{
         setVisible(true);
     }
     
-    public void drawCanvasGrid(int height, int width, int drawRow, int drawColumn) {
-        canvas.init(height, width, drawRow,drawColumn);
+    public void drawCanvasGrid(int height, int width, char[][] mapArray) {
+        canvas.init(height, width, mapArray);
         canvas.drawGrid();
     }
     

@@ -5,8 +5,8 @@ import java.awt.*;
 public class CellCanvas extends Canvas {
     private int height;
     private int width;
-    private int drawRow;
-    private int drawColumn;
+    private char[][] mapArray;
+    
     
     
     
@@ -14,19 +14,19 @@ public class CellCanvas extends Canvas {
         super();
         this.height = 0;
         this.width = 0;
-        this.drawRow = 0;
-        this.drawColumn = 0;
+        this.mapArray = null;
+        
         
         // TODO Auto-generated constructor stub
     }
 
 
 
-    public void init(int height, int width,int drawRow, int drawColumn) {
+    public void init(int height, int width,char[][] mapArray) {
         this.height = height;
         this.width = width;
-        this.drawRow = drawRow;
-        this.drawColumn = drawColumn;
+        this.mapArray = mapArray;
+        
         
     }
     
@@ -47,18 +47,27 @@ public class CellCanvas extends Canvas {
             g.drawLine(0, currentYPosition, this.getWidth(),currentYPosition);
         }
         g.setColor(Color.RED);
-        drawCell(g, drawRow,drawColumn);
+        if (mapArray != null) {
+            drawCell(g);
+        }
     }
     
     
     
-    public void drawCell(Graphics g, int row, int column) {
-        int XPosition =(int) ((double )this.getWidth()/this.width *(column-1));
-        int YPosition =(int) ((double )this.getHeight()/this.height * (row-1));
-        int rowWidth =(int) ((double )this.getWidth()/this.width );
-        int columnHeight =(int) ((double )this.getHeight()/this.height);
+    public void drawCell(Graphics g) {
+        for (int row = 0; row<mapArray.length; row++) {
+            for (int column = 0; column <mapArray[0].length; column++) {
+                if (mapArray[row][column]== 'X') {
+                    int XPosition =(int) ((double )this.getWidth()/this.width *(column));
+                    int YPosition =(int) ((double )this.getHeight()/this.height * (row));
+                    int rowWidth =(int) ((double )this.getWidth()/this.width );
+                    int columnHeight =(int) ((double )this.getHeight()/this.height);
+                    
+                    g.fillRect(XPosition+1, YPosition+1, rowWidth-2, columnHeight-2);
+                }
+            }
+        }
         
-        g.fillRect(XPosition, YPosition, rowWidth, columnHeight);
     }
 
 }
