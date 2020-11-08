@@ -128,9 +128,13 @@ public class Controller  {
     public class CanvasMouseListener  extends MouseAdapter   {
         @Override
         public void mouseReleased(MouseEvent event)  {
-           // int row = (int) ((double )this.getWidth()/this.width *(column));
-            //myMap.setPixel(event.getY(),event.getX());
-            myMap.setPixel(7,7);
+            if (!gameTimer.isRunning()) {
+            int row = (int) ((double )event.getY()*myMap.getHeight()/canvas.getHeight());
+            int column = (int) ((double )event.getX()*myMap.getWidth()/canvas.getWidth());
+            myMap.setPixel(row, column);
+            canvas.drawGrid();
+            //myMap.setPixel(7,7);
+            }
         }
       }
 }
