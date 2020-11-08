@@ -146,6 +146,7 @@ public class Map {
      */
     public void setPixel(int row, int column ) {
         this.map[row][column] = true;
+        
     }
     
     /**

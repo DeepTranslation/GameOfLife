@@ -49,7 +49,8 @@ public class Controller  {
          } else {
              canvasSize.setSize(canvasSize.width, canvasSize.width);
          }
-         canvas.addPropertyChangeListener(new CanvasClickListener());
+         //canvas.addPropertyChangeListener(new CanvasClickListener());
+         canvas.addMouseListener(new CanvasMouseListener());
          
         char[][] startArray = {
                 {'.','X','.','.','.','.','.','.','.','.'},
@@ -116,11 +117,20 @@ public class Controller  {
     public class CanvasClickListener implements PropertyChangeListener {
         @Override
         public void propertyChange(PropertyChangeEvent e) {
-            
+            System.out.println("in CanvasClickListener");
             myMap.setPixel(((Point)e.getNewValue()).y, ((Point)e.getNewValue()).x);
             
             //myMap.setPixel(row, column);
             //mainFrame.drawCanvasGrid((boolean[][])e.getNewValue());
         }
     }
+    
+    public class CanvasMouseListener  extends MouseAdapter   {
+        @Override
+        public void mouseReleased(MouseEvent event)  {
+           // int row = (int) ((double )this.getWidth()/this.width *(column));
+            //myMap.setPixel(event.getY(),event.getX());
+            myMap.setPixel(7,7);
+        }
+      }
 }

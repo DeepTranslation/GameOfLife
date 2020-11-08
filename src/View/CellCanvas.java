@@ -75,19 +75,21 @@ public class CellCanvas extends Canvas {
         
     }
    
-   public class CanvasMouseListener  extends MouseAdapter   {
-       @Override
-       public void mouseReleased(MouseEvent event)  {
-           Point coordinates = new Point(event.getY(), event.getX());
-           canvasClicks.firePropertyChange( "canvas", null, coordinates);
-       }
-     }
+//   public class CanvasMouseListener  extends MouseAdapter   {
+//       @Override
+//       public void mouseReleased(MouseEvent event)  {
+//           Point coordinates = new Point(event.getY(), event.getX());
+//           canvasClicks.firePropertyChange( "canvas", null, coordinates);
+//       }
+//     }
    
+   @Override
    public void addPropertyChangeListener( PropertyChangeListener l )
    {
       canvasClicks.addPropertyChangeListener( l );
    }
 
+   @Override
    public void removePropertyChangeListener( PropertyChangeListener l )
    {
        canvasClicks.removePropertyChangeListener( l );
