@@ -22,7 +22,7 @@ public class CellCanvas extends Canvas {
     /**
      * Update current map
      */
-    public void init(int newHeight, int newWidth,boolean[][] newMap) {
+    public void update(int newHeight, int newWidth,boolean[][] newMap) {
         this.height = newHeight;
         this.width = newWidth;
         this.map = newMap;

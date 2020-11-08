@@ -74,6 +74,7 @@ public class MainFrame extends JFrame{
         controlPanel.add(stopButton,0,2);
 
         add(canvas,BorderLayout.CENTER);
+        
         Dimension canvasSize = canvas.getSize();
         if (canvasSize.height < canvasSize.width) {
             canvasSize.setSize(canvasSize.height, canvasSize.height);
@@ -85,7 +86,7 @@ public class MainFrame extends JFrame{
     }
     
     public void drawCanvasGrid(int height, int width, boolean[][] map) {
-        canvas.init(height, width, map);
+        canvas.update(height, width, map);
         canvas.drawGrid();
     }
     
