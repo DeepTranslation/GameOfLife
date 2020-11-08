@@ -36,6 +36,9 @@ public class Controller  {
         
         mainFrame.setStartButtonListener(new StartButtonListener());
         mainFrame.setStopButtonListener(new StopButtonListener());
+        mainFrame.setClearButtonListener(new ClearButtonListener());
+        mainFrame.setRandomButtonListener(new RandomButtonListener());
+        mainFrame.setRandomLinesButtonListener(new RandomLinesButtonListener());
 
          Dimension canvasSize = canvas.getSize();
          if (canvasSize.height < canvasSize.width) {
@@ -114,6 +117,26 @@ public class Controller  {
         @Override
         public void mouseReleased(MouseEvent event)  {
             gameTimer.stop();
+        }
+      }
+    
+    public class ClearButtonListener  extends MouseAdapter   {
+        @Override
+        public void mouseReleased(MouseEvent event)  {
+            myMap.clearMap();
+        }
+      }
+    
+    public class RandomButtonListener  extends MouseAdapter   {
+        @Override
+        public void mouseReleased(MouseEvent event)  {
+            myMap.randomMap();
+        }
+      }
+    public class RandomLinesButtonListener  extends MouseAdapter   {
+        @Override
+        public void mouseReleased(MouseEvent event)  {
+            myMap.randomLinesMap();
         }
       }
    

@@ -191,4 +191,36 @@ public class Map {
       mapChanges.removePropertyChangeListener( l );
     }
 
+
+    public void clearMap() {
+        for (int row = 0; row < this.map.length; row++) {
+            Arrays.fill(this.map[row], false);
+        }
+        mapChanges.firePropertyChange( "map", null,this.map);
+    }
+
+
+    public void randomMap() {
+        for (int row = 0; row < this.map.length; row++) {
+            for (int column = 0; column < this.map.length; column++) {
+               if (Math.random() < 0.5) {
+                   this.setPixel(row , column);
+               }else {
+                   this.clearPixel(row , column);
+               }
+            }
+           
+        }
+        mapChanges.firePropertyChange( "map", null,this.map);
+        
+    }
+    
+    public void randomLinesMap() {
+        for (int y = 0; y < this.map.length; y++) {
+            Arrays.fill(this.map[y], (Math.random() < 0.5));
+        }
+        mapChanges.firePropertyChange( "map", null,this.map);
+        
+    }
+
 }
