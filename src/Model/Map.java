@@ -22,7 +22,8 @@ public class Map {
             Arrays.fill(this.map[y], false);
         this.height = height;
         this.width = width;
-        changes = new PropertyChangeSupport( this );           
+        changes = new PropertyChangeSupport( this ); 
+        changes.firePropertyChange( "map", null,this.map);
         }
     }
     
@@ -49,8 +50,10 @@ public class Map {
                ; //map initialised to false 
            }
        }
-       changes.firePropertyChange( "map", this.map, nextMap.map );
+       boolean[][] oldMap = this.map;
        this.map = nextMap.map;
+       changes.firePropertyChange( "map", oldMap, this.map );
+       
     }
     
     /**

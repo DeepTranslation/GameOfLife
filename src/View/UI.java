@@ -16,10 +16,13 @@ import Model.Map;
 public class UI  {
     protected Map myMap;
     protected MainFrame mainFrame;
+    protected javax.swing.Timer gameTimer;
 
     public UI() {
-        this.myMap = new Map(10,10);
+       
         this.mainFrame = new MainFrame();
+        this.myMap = new Map(10,10);
+        this.gameTimer = new javax.swing.Timer( 500, new TimerListener() );
     }
     
     public void launch() {
@@ -48,24 +51,18 @@ public class UI  {
                 {'.','.','.','.','.','.','.','.','.','.'},
             };
         myMap.setMap(startArray);
+        
         myMap.addPropertyChangeListener(new CangeMapListener());
-       // mainFrame.drawMap(startArray);
+        
+
+        //mainFrame.drawMap(startArray);
         mainFrame.setStartButtonListener(new MyMouseListener());
     }
     
     public class MyMouseListener  extends MouseAdapter   {
-//      @Override
-//      public void mousePressed(MouseEvent event)   {
-//          pcModel.newLine(getColor());
-//          pcModel.setColor(getColor());
-//      }
-  
       @Override
       public void mouseReleased(MouseEvent event)  {
-          myMap.nextGeneration();
-//          char[][] newArray = myMap.getMapArray();
-//          mainFrame.drawMap(newArray);
-
+          gameTimer.start();
       }
     }
     
@@ -75,5 +72,13 @@ public class UI  {
             mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),(boolean[][])e.getNewValue());
         }
     } 
+    
+    public class TimerListener implements ActionListener{
+        @Override
+        public void actionPerformed( ActionEvent e ) {
+            myMap.nextGeneration();
+          }
+
+    }
 
 }

@@ -104,6 +104,6 @@ public class MainFrame extends JFrame{
 ////         textArea.update(g);
 //         
 //     }
-     
+    
      
 }  
