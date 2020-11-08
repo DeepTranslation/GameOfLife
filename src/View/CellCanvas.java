@@ -1,6 +1,10 @@
 package View;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 /** Graphical representation 
  * 
@@ -11,20 +15,22 @@ public class CellCanvas extends Canvas {
     private int height;
     private int width;
     private boolean[][] map;
+    public PropertyChangeSupport canvasClicks;
 
     public CellCanvas() {
         super();
         this.height = 0;
         this.width = 0;
         this.map = null;
+        canvasClicks = new PropertyChangeSupport( this ); 
     }
 
     /**
      * Update current map
      */
-    public void update(int newHeight, int newWidth,boolean[][] newMap) {
-        this.height = newHeight;
-        this.width = newWidth;
+    public void update(boolean[][] newMap) {
+        this.height = newMap.length;
+        this.width = newMap[0].length;
         this.map = newMap;
     }
     
@@ -68,5 +74,24 @@ public class CellCanvas extends Canvas {
         }
         
     }
+   
+   public class CanvasMouseListener  extends MouseAdapter   {
+       @Override
+       public void mouseReleased(MouseEvent event)  {
+           Point coordinates = new Point(event.getY(), event.getX());
+           canvasClicks.firePropertyChange( "canvas", null, coordinates);
+       }
+     }
+   
+   public void addPropertyChangeListener( PropertyChangeListener l )
+   {
+      canvasClicks.addPropertyChangeListener( l );
+   }
+
+   public void removePropertyChangeListener( PropertyChangeListener l )
+   {
+       canvasClicks.removePropertyChangeListener( l );
+   }
+
 
 }

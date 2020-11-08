@@ -1,19 +1,24 @@
 package View;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import Model.Map;
 
-public class UI  {
+public class Controller  {
     protected Map myMap;
     protected MainFrame mainFrame;
     protected javax.swing.Timer gameTimer;
+    protected CellCanvas canvas;
 
-    public UI() {
+    public Controller() {
         this.gameTimer = new javax.swing.Timer( 300, new TimerListener() );
         this.mainFrame = new MainFrame();
+        this.canvas = new CellCanvas();
         this.myMap = new Map(10,10);
+        canvas.setBackground(Color.decode(colors.MAPBACKGROUND.hexCode));
+        mainFrame.add(canvas,BorderLayout.CENTER);
         
     }
     
@@ -30,6 +35,22 @@ public class UI  {
 //        Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");    
 //        mainFrame.setIconImage(icon); 
         
+        mainFrame.setStartButtonListener(new StartButtonListener());
+        mainFrame.setStopButtonListener(new StopButtonListener());
+        
+       // canvas = new CellCanvas();
+        //canvas.setBackground(Color.BLACK);
+        // canvas.setBackground(Color.decode("#9B9B7A"));
+         //canvas.addPropertyChangeListener(new Canvas);
+         
+         Dimension canvasSize = canvas.getSize();
+         if (canvasSize.height < canvasSize.width) {
+             canvasSize.setSize(canvasSize.height, canvasSize.height);
+         } else {
+             canvasSize.setSize(canvasSize.width, canvasSize.width);
+         }
+         canvas.addPropertyChangeListener(new CanvasClickListener());
+         
         char[][] startArray = {
                 {'.','X','.','.','.','.','.','.','.','.'},
                 {'.','.','X','.','.','.','.','.','.','.'},
@@ -44,11 +65,19 @@ public class UI  {
             };
         myMap.addPropertyChangeListener(new ChangeMapListener());
         myMap.setMap(startArray);
+       // myMap.addPropertyChangeListener(new CanvasClickListener());
         
         
         
-        mainFrame.setStartButtonListener(new StartButtonListener());
-        mainFrame.setStopButtonListener(new StopButtonListener());
+    }
+    
+    public void drawCanvasGrid(boolean[][] map) {
+        canvas.update(map);
+        canvas.drawGrid();
+    }
+    
+    public void doStuff(int row, int column) {
+        myMap.setPixel(row,column);
     }
     
     public class StartButtonListener  extends MouseAdapter   {
@@ -65,10 +94,14 @@ public class UI  {
         }
       }
     
+   
+    
     public class ChangeMapListener implements PropertyChangeListener {
         @Override
         public void propertyChange(PropertyChangeEvent e) {
-            mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),(boolean[][])e.getNewValue());
+            //mainFrame.drawCanvasGrid((boolean[][])e.getNewValue());
+            canvas.update((boolean[][])e.getNewValue());
+            canvas.drawGrid();
         }
     } 
     
@@ -80,4 +113,14 @@ public class UI  {
 
     }
 
+    public class CanvasClickListener implements PropertyChangeListener {
+        @Override
+        public void propertyChange(PropertyChangeEvent e) {
+            
+            myMap.setPixel(((Point)e.getNewValue()).y, ((Point)e.getNewValue()).x);
+            
+            //myMap.setPixel(row, column);
+            //mainFrame.drawCanvasGrid((boolean[][])e.getNewValue());
+        }
+    }
 }

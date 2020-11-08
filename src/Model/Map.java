@@ -8,7 +8,7 @@ public class Map {
     private boolean[][] map;
     private int height;
     private int width;
-    private PropertyChangeSupport changes;
+    private PropertyChangeSupport mapChanges;
     
     /**
      * Map Constructor,
@@ -22,8 +22,8 @@ public class Map {
             Arrays.fill(this.map[y], false);
         this.height = height;
         this.width = width;
-        changes = new PropertyChangeSupport( this ); 
-        changes.firePropertyChange( "map", null,this.map);
+        mapChanges = new PropertyChangeSupport( this ); 
+        //changes.firePropertyChange( "map", null,this.map);
         }
     }
     
@@ -52,7 +52,7 @@ public class Map {
        }
        boolean[][] oldMap = this.map;
        this.map = nextMap.map;
-       changes.firePropertyChange( "map", oldMap, this.map );
+       mapChanges.firePropertyChange( "map", oldMap, this.map );
        
     }
     
@@ -194,17 +194,17 @@ public class Map {
                 }
             }
         }
-        changes.firePropertyChange( "map", null,this.map);
+        mapChanges.firePropertyChange( "map", null,this.map);
     }
     
     public void addPropertyChangeListener( PropertyChangeListener l )
     {
-      changes.addPropertyChangeListener( l );
+      mapChanges.addPropertyChangeListener( l );
     }
 
     public void removePropertyChangeListener( PropertyChangeListener l )
     {
-      changes.removePropertyChangeListener( l );
+      mapChanges.removePropertyChangeListener( l );
     }
 
 }

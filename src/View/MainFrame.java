@@ -1,17 +1,17 @@
 package View;
 
-
-
-
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
+import View.Controller.ChangeMapListener;
 
 
 
 public class MainFrame extends JFrame{  
-    private CellCanvas canvas;
+    public CellCanvas canvas;
     private JLabel label;
     private Panel controlPanel;
     //private Panel viewPanel;
@@ -34,18 +34,20 @@ public class MainFrame extends JFrame{
         
         setLayout(new BorderLayout());
         
-        canvas = new CellCanvas();
-       //canvas.setBackground(Color.BLACK);
-       // canvas.setBackground(Color.decode("#9B9B7A"));
-        canvas.setBackground(Color.decode(colors.MAPBACKGROUND.hexCode));
-      
-        add(canvas,BorderLayout.CENTER);
-        Dimension canvasSize = canvas.getSize();
-        if (canvasSize.height < canvasSize.width) {
-            canvasSize.setSize(canvasSize.height, canvasSize.height);
-        } else {
-            canvasSize.setSize(canvasSize.width, canvasSize.width);
-        }
+//        canvas = new CellCanvas();
+//       //canvas.setBackground(Color.BLACK);
+//       // canvas.setBackground(Color.decode("#9B9B7A"));
+//        //canvas.addPropertyChangeListener(new Canvas);
+//        canvas.setBackground(Color.decode(colors.MAPBACKGROUND.hexCode));
+////        canvas.addPropertyChangeListener(new CanvasMouseListener());
+////        canvas.addMouseListener(new CanvasClickListener());
+//        add(canvas,BorderLayout.CENTER);
+//        Dimension canvasSize = canvas.getSize();
+//        if (canvasSize.height < canvasSize.width) {
+//            canvasSize.setSize(canvasSize.height, canvasSize.height);
+//        } else {
+//            canvasSize.setSize(canvasSize.width, canvasSize.width);
+//        }
 
         // Control Panel
         label = new JLabel("Info");
@@ -62,10 +64,10 @@ public class MainFrame extends JFrame{
         setVisible(true);
     }
     
-    public void drawCanvasGrid(int height, int width, boolean[][] map) {
-        canvas.update(height, width, map);
-        canvas.drawGrid();
-    }
+//    public void drawCanvasGrid(boolean[][] map) {
+//        canvas.update(map);
+//        canvas.drawGrid();
+//    }
     
     public void setStartButtonListener(MouseListener listener) {
         startButton.addMouseListener( listener);
@@ -75,4 +77,19 @@ public class MainFrame extends JFrame{
         stopButton.addMouseListener( listener);
     }    
      
+//    public void setCanvasClickListener() {
+//        canvas.addPropertyChangeListener(new CanvasMouseListener);
+//    }
+    
+//    public class CanvasMouseListener  extends MouseAdapter   {
+//        @Override
+//        public void mouseReleased(MouseEvent event)  {
+//            System.out.println("inside CanvasMouseListener");
+////            ui.doStuff(4,5);
+////            doStuff(event.getPoint());
+////            event.getPoint()
+////            myMap.setPixel((int)e.getOldValue(), (int)e.getNewValue());
+//         //   canvasClicks.firePropertyChange( "canvas", event.getY(), event.getX());
+//        }
+//      }
 }  
