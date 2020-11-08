@@ -129,10 +129,15 @@ public class Controller  {
         @Override
         public void mouseReleased(MouseEvent event)  {
             if (!gameTimer.isRunning()) {
-            int row = (int) ((double )event.getY()*myMap.getHeight()/canvas.getHeight());
-            int column = (int) ((double )event.getX()*myMap.getWidth()/canvas.getWidth());
-            myMap.setPixel(row, column);
-            canvas.drawGrid();
+                    
+                int row = (int) ((double )event.getY()*myMap.getHeight()/canvas.getHeight());
+                int column = (int) ((double )event.getX()*myMap.getWidth()/canvas.getWidth());
+                if (!myMap.getPixel(row, column)) {
+                    myMap.setPixel(row, column);
+                } else {
+                    myMap.clearPixel(row, column);
+                }
+                canvas.drawGrid();
             //myMap.setPixel(7,7);
             }
         }
