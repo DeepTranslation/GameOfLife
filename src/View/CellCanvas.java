@@ -35,7 +35,9 @@ public class CellCanvas extends Canvas {
     @Override
     public void paint(Graphics g)  {
         int currentXPosition,currentYPosition;;
-        g.setColor(Color.GRAY);
+        //g.setColor(Color.GRAY);
+        g.setColor(Color.decode(colors.MAPGRIDLINES.hexCode));
+        
         for (int i = 0; i < this.width; i++) {
             currentXPosition =(int) ((double )this.getWidth()/this.width * i);
             g.drawLine(currentXPosition, 0,currentXPosition, this.getHeight());
@@ -44,7 +46,8 @@ public class CellCanvas extends Canvas {
             currentYPosition =(int) ((double )this.getHeight()/this.height * i);
             g.drawLine(0, currentYPosition, this.getWidth(),currentYPosition);
         }
-        g.setColor(Color.RED);
+        //g.setColor(Color.RED);
+        g.setColor(Color.decode(colors.ORGANISM.hexCode));
         if (map != null) {
             drawCell(g);
         }

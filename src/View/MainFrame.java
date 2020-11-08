@@ -36,7 +36,10 @@ public class MainFrame extends JFrame{
         setLayout(new BorderLayout());
         
         canvas = new CellCanvas();
-        canvas.setBackground(Color.BLACK);
+       //canvas.setBackground(Color.BLACK);
+       // canvas.setBackground(Color.decode("#9B9B7A"));
+        canvas.setBackground(Color.decode(colors.MAPBACKGROUND.hexCode));
+      
         add(canvas,BorderLayout.CENTER);
         Dimension canvasSize = canvas.getSize();
         if (canvasSize.height < canvasSize.width) {
@@ -49,13 +52,13 @@ public class MainFrame extends JFrame{
         label = new JLabel("Info");
         startButton=new JButton("Start");
         stopButton=new JButton("Stop");
- 
+        
         controlPanel = new Panel();
         controlPanel.setLayout(new GridLayout(1,3));
         controlPanel.add(label,0,0);
         controlPanel.add(startButton,0,1);
         controlPanel.add(stopButton,0,2);
-
+        controlPanel.setBackground(Color.decode(colors.PANEL.hexCode));
         add(controlPanel,BorderLayout.SOUTH);
         setVisible(true);
     }
