@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.event.ListDataListener;
 
 
 
@@ -15,10 +14,10 @@ public class MainFrame extends JFrame{
     private CellCanvas canvas;
     private JLabel label;
     private Panel controlPanel;
-    private Panel viewPanel;
+    //private Panel viewPanel;
     private JButton startButton;
     private JButton stopButton;
-    private JTextArea textArea;
+    //private JTextArea textArea;
     
     
     public MainFrame() {

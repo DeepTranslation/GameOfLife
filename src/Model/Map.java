@@ -23,7 +23,7 @@ public class Map {
         this.height = height;
         this.width = width;
         changes = new PropertyChangeSupport( this ); 
-        changes.firePropertyChange( "map", this.map,this.map);
+        changes.firePropertyChange( "map", null,this.map);
         }
     }
     
@@ -185,7 +185,6 @@ public class Map {
      *                  . = cell dead
      */
     public void setMap(char[][] inputMap){
-        boolean[][] oldMap = this.map;
         for (int row = 0; row< getHeight(); row++) {
             for (int column = 0; column < getWidth(); column++) {
                 if (inputMap[row][column]=='X') {

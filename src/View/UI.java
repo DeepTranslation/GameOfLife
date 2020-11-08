@@ -1,16 +1,8 @@
 package View;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Scanner;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import Model.Map;
 
 public class UI  {
@@ -50,7 +42,7 @@ public class UI  {
                 {'.','.','.','.','.','.','.','.','.','.'},
                 {'.','.','.','.','.','.','.','.','.','.'},
             };
-        myMap.addPropertyChangeListener(new CangeMapListener());
+        myMap.addPropertyChangeListener(new ChangeMapListener());
         myMap.setMap(startArray);
         
         
@@ -73,7 +65,7 @@ public class UI  {
         }
       }
     
-    public class CangeMapListener implements PropertyChangeListener {
+    public class ChangeMapListener implements PropertyChangeListener {
         @Override
         public void propertyChange(PropertyChangeEvent e) {
             mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),(boolean[][])e.getNewValue());
