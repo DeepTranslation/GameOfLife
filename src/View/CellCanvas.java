@@ -60,10 +60,10 @@ public class CellCanvas extends Canvas {
                 if (mapArray[row][column]== 'X') {
                     int XPosition =(int) ((double )this.getWidth()/this.width *(column));
                     int YPosition =(int) ((double )this.getHeight()/this.height * (row));
-                    int rowWidth =(int) ((double )this.getWidth()/this.width );
-                    int columnHeight =(int) ((double )this.getHeight()/this.height);
+                    int rowWidth =(int) ((double )this.getWidth()/this.width*(column+1) ) -XPosition ;
+                    int columnHeight =(int) ((double )this.getHeight()/this.height*(row+1))-YPosition;
                     
-                    g.fillRect(XPosition+1, YPosition+1, rowWidth-2, columnHeight-2);
+                    g.fillRect(XPosition+1, YPosition+1, rowWidth-1, columnHeight-1);
                 }
             }
         }

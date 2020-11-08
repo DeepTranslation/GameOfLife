@@ -1,7 +1,13 @@
 package View;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.*;
 import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import Model.Map;
 
@@ -21,8 +27,17 @@ public class UI  {
     }
     
     public void launch() {
-        
+        /*
         mainFrame.setVisible(true);
+        try{ 
+            mainFrame.setIconImage(ImageIO.read(new File("./resources/icon.png")));
+          } 
+          catch (IOException e){
+            e.printStackTrace();
+          }*/
+//        mainFrame.setIconImage(ImageIO.read(new File("resources/icon.png")));
+//        Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");    
+//        mainFrame.setIconImage(icon); 
         
         char[][] startArray = {
                 {'.','X','.','.','.','.','.','.','.','.'},
@@ -42,35 +57,6 @@ public class UI  {
         mainFrame.setStartButtonListener(new MyMouseListener());
         mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),null);
         
-        /*
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        //myMap = new Map(10,10);
-        char[][] startArray = {
-                {'.','X','.','.','.','.','.','.','.','.'},
-                {'.','.','X','.','.','.','.','.','.','.'},
-                {'X','X','X','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-                {'.','.','.','.','.','.','.','.','.','.'},
-            };
-        myMap.setMap(startArray);
-        while (true) {
-            
-            input = scanner.nextLine();
-            if (input.equals("o")) {
-                break;
-            }
-            
-            myMap.nextGeneration();
-            myMap.drawMap();
-            char[][] newArray = myMap.getMapArray();
-            mainFrame.drawMap(newArray);
-        }*/
         
     }
     
@@ -86,7 +72,7 @@ public class UI  {
       public void mouseReleased(MouseEvent event)  {
         
           myMap.nextGeneration();
-          //myMap.drawMap();
+        
           char[][] newArray = myMap.getMapArray();
           mainFrame.drawMap(newArray);
           drawRow++;
