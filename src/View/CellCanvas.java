@@ -1,8 +1,6 @@
 package View;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -41,7 +39,6 @@ public class CellCanvas extends Canvas {
     @Override
     public void paint(Graphics g)  {
         int currentXPosition,currentYPosition;;
-        //g.setColor(Color.GRAY);
         g.setColor(Color.decode(colors.MAPGRIDLINES.hexCode));
         
         for (int i = 0; i < this.width; i++) {
@@ -52,7 +49,6 @@ public class CellCanvas extends Canvas {
             currentYPosition =(int) ((double )this.getHeight()/this.height * i);
             g.drawLine(0, currentYPosition, this.getWidth(),currentYPosition);
         }
-        //g.setColor(Color.RED);
         g.setColor(Color.decode(colors.ORGANISM.hexCode));
         if (map != null) {
             drawCell(g);
@@ -75,13 +71,6 @@ public class CellCanvas extends Canvas {
         
     }
    
-//   public class CanvasMouseListener  extends MouseAdapter   {
-//       @Override
-//       public void mouseReleased(MouseEvent event)  {
-//           Point coordinates = new Point(event.getY(), event.getX());
-//           canvasClicks.firePropertyChange( "canvas", null, coordinates);
-//       }
-//     }
    
    @Override
    public void addPropertyChangeListener( PropertyChangeListener l )

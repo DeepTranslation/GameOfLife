@@ -2,26 +2,17 @@ package View;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.*;
-import View.Controller.ChangeMapListener;
-
-
 
 public class MainFrame extends JFrame{  
     public CellCanvas canvas;
     private JLabel label;
     private Panel controlPanel;
-    //private Panel viewPanel;
     private JButton startButton;
     private JButton stopButton;
-    //private JTextArea textArea;
     
     
     public MainFrame() {
-
         initUI();
     }
 
@@ -33,21 +24,6 @@ public class MainFrame extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         setLayout(new BorderLayout());
-        
-//        canvas = new CellCanvas();
-//       //canvas.setBackground(Color.BLACK);
-//       // canvas.setBackground(Color.decode("#9B9B7A"));
-//        //canvas.addPropertyChangeListener(new Canvas);
-//        canvas.setBackground(Color.decode(colors.MAPBACKGROUND.hexCode));
-////        canvas.addPropertyChangeListener(new CanvasMouseListener());
-////        canvas.addMouseListener(new CanvasClickListener());
-//        add(canvas,BorderLayout.CENTER);
-//        Dimension canvasSize = canvas.getSize();
-//        if (canvasSize.height < canvasSize.width) {
-//            canvasSize.setSize(canvasSize.height, canvasSize.height);
-//        } else {
-//            canvasSize.setSize(canvasSize.width, canvasSize.width);
-//        }
 
         // Control Panel
         label = new JLabel("Info");
@@ -77,19 +53,4 @@ public class MainFrame extends JFrame{
         stopButton.addMouseListener( listener);
     }    
      
-//    public void setCanvasClickListener() {
-//        canvas.addPropertyChangeListener(new CanvasMouseListener);
-//    }
-    
-//    public class CanvasMouseListener  extends MouseAdapter   {
-//        @Override
-//        public void mouseReleased(MouseEvent event)  {
-//            System.out.println("inside CanvasMouseListener");
-////            ui.doStuff(4,5);
-////            doStuff(event.getPoint());
-////            event.getPoint()
-////            myMap.setPixel((int)e.getOldValue(), (int)e.getNewValue());
-//         //   canvasClicks.firePropertyChange( "canvas", event.getY(), event.getX());
-//        }
-//      }
 }  

@@ -116,23 +116,6 @@ public class Map {
         return height;
     }
     
-//    /**
-//     * TODO: move into View
-//     */
-//    public void drawMap() {
-//        char output;
-//        for (int row = 0; row< getHeight(); row++) {
-//            for (int column = 0; column < getWidth(); column++) {
-//                if (this.map[row][column]) {
-//                     output = 'X';
-//                } else {
-//                    output = '.';
-//                }
-//                System.out.print(output);
-//            }
-//            System.out.println();
-//        }
-//    }
     
     /**
      * Returns the set status of an individual cell
