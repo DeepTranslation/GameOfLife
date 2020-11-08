@@ -23,7 +23,7 @@ public class Map {
         this.height = height;
         this.width = width;
         changes = new PropertyChangeSupport( this ); 
-        changes.firePropertyChange( "map", null,this.map);
+        changes.firePropertyChange( "map", this.map,this.map);
         }
     }
     
@@ -158,6 +158,7 @@ public class Map {
     
     /**
      * gets the whole map as a 2D Array
+     * --- only used for testing ---
      * @return 2D Array of char
      *                  X = cell alive
      *                  . = cell dead
@@ -178,12 +179,13 @@ public class Map {
     
     /**
      * sets the whole map to the parameter values
+     * --- only used for initialising the map  ----
      * @param inputMap = 2D Array
      *                  X = cell alive
      *                  . = cell dead
      */
     public void setMap(char[][] inputMap){
-        
+        boolean[][] oldMap = this.map;
         for (int row = 0; row< getHeight(); row++) {
             for (int column = 0; column < getWidth(); column++) {
                 if (inputMap[row][column]=='X') {
@@ -193,6 +195,7 @@ public class Map {
                 }
             }
         }
+        changes.firePropertyChange( "map", null,this.map);
     }
     
     public void addPropertyChangeListener( PropertyChangeListener l )

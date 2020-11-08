@@ -19,10 +19,10 @@ public class UI  {
     protected javax.swing.Timer gameTimer;
 
     public UI() {
-       
+        this.gameTimer = new javax.swing.Timer( 300, new TimerListener() );
         this.mainFrame = new MainFrame();
         this.myMap = new Map(10,10);
-        this.gameTimer = new javax.swing.Timer( 500, new TimerListener() );
+        
     }
     
     public void launch() {
@@ -50,21 +50,28 @@ public class UI  {
                 {'.','.','.','.','.','.','.','.','.','.'},
                 {'.','.','.','.','.','.','.','.','.','.'},
             };
+        myMap.addPropertyChangeListener(new CangeMapListener());
         myMap.setMap(startArray);
         
-        myMap.addPropertyChangeListener(new CangeMapListener());
         
-
-        //mainFrame.drawMap(startArray);
-        mainFrame.setStartButtonListener(new MyMouseListener());
+        
+        mainFrame.setStartButtonListener(new StartButtonListener());
+        mainFrame.setStopButtonListener(new StopButtonListener());
     }
     
-    public class MyMouseListener  extends MouseAdapter   {
+    public class StartButtonListener  extends MouseAdapter   {
       @Override
       public void mouseReleased(MouseEvent event)  {
           gameTimer.start();
       }
     }
+    
+    public class StopButtonListener  extends MouseAdapter   {
+        @Override
+        public void mouseReleased(MouseEvent event)  {
+            gameTimer.stop();
+        }
+      }
     
     public class CangeMapListener implements PropertyChangeListener {
         @Override

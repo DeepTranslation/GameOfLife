@@ -35,33 +35,16 @@ public class MainFrame extends JFrame{
         
         setLayout(new BorderLayout());
         
-        // Main View Panel
-//        textArea = new JTextArea(
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" +
-//                "..........\n" 
-//            );
-//        textArea.setFont(new Font("Courier", Font.PLAIN, 16));
-//        textArea.setLineWrap(true);
-//        textArea.setWrapStyleWord(true);
-//        textArea.setEditable(false);
-//        
         canvas = new CellCanvas();
         canvas.setBackground(Color.BLACK);
-       
-        
-//        viewPanel = new Panel();
-//        viewPanel.setLayout(new GridLayout(1,2));
-//        viewPanel.add(textArea,0,0);
-//        viewPanel.add(canvas,0,1);
-        
+        add(canvas,BorderLayout.CENTER);
+        Dimension canvasSize = canvas.getSize();
+        if (canvasSize.height < canvasSize.width) {
+            canvasSize.setSize(canvasSize.height, canvasSize.height);
+        } else {
+            canvasSize.setSize(canvasSize.width, canvasSize.width);
+        }
+
         // Control Panel
         label = new JLabel("Info");
         startButton=new JButton("Start");
@@ -73,14 +56,6 @@ public class MainFrame extends JFrame{
         controlPanel.add(startButton,0,1);
         controlPanel.add(stopButton,0,2);
 
-        add(canvas,BorderLayout.CENTER);
-        
-        Dimension canvasSize = canvas.getSize();
-        if (canvasSize.height < canvasSize.width) {
-            canvasSize.setSize(canvasSize.height, canvasSize.height);
-        } else {
-            canvasSize.setSize(canvasSize.width, canvasSize.width);
-        }
         add(controlPanel,BorderLayout.SOUTH);
         setVisible(true);
     }
@@ -94,16 +69,8 @@ public class MainFrame extends JFrame{
         startButton.addMouseListener( listener);
     }
     
-//     public void drawMap(char[][] mapArray) {
-//         
-////         StringBuilder text = new StringBuilder();
-////         for (int row = 0; row<mapArray.length; row++) {
-////             text.append(String.valueOf(mapArray[row])+"\n");
-////         }
-////         textArea.setText(text.toString());
-////         textArea.update(g);
-//         
-//     }
-    
+    public void setStopButtonListener(MouseListener listener) {
+        stopButton.addMouseListener( listener);
+    }    
      
 }  
