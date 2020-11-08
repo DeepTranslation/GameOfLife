@@ -3,6 +3,8 @@ package View;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -14,16 +16,10 @@ import Model.Map;
 public class UI  {
     protected Map myMap;
     protected MainFrame mainFrame;
-    protected int drawRow ;
-    protected int drawColumn;
 
     public UI() {
-        
         this.myMap = new Map(10,10);
         this.mainFrame = new MainFrame();
-        this.drawRow = 0;
-        this.drawColumn = 0;
-        
     }
     
     public void launch() {
@@ -52,35 +48,32 @@ public class UI  {
                 {'.','.','.','.','.','.','.','.','.','.'},
             };
         myMap.setMap(startArray);
-        mainFrame.drawMap(startArray);
-        
+        myMap.addPropertyChangeListener(new CangeMapListener());
+       // mainFrame.drawMap(startArray);
         mainFrame.setStartButtonListener(new MyMouseListener());
-        mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),null);
-        
-        
     }
     
-    public class MyMouseListener   extends MouseAdapter   {
+    public class MyMouseListener  extends MouseAdapter   {
 //      @Override
 //      public void mousePressed(MouseEvent event)   {
 //          pcModel.newLine(getColor());
 //          pcModel.setColor(getColor());
-//        
 //      }
   
       @Override
       public void mouseReleased(MouseEvent event)  {
-        
           myMap.nextGeneration();
-        
-          char[][] newArray = myMap.getMapArray();
-          mainFrame.drawMap(newArray);
-          drawRow++;
-          drawColumn++;
-          mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(), newArray);
+//          char[][] newArray = myMap.getMapArray();
+//          mainFrame.drawMap(newArray);
+
       }
     }
     
-    
+    public class CangeMapListener implements PropertyChangeListener {
+        @Override
+        public void propertyChange(PropertyChangeEvent e) {
+            mainFrame.drawCanvasGrid(myMap.getHeight(), myMap.getWidth(),(boolean[][])e.getNewValue());
+        }
+    } 
 
 }

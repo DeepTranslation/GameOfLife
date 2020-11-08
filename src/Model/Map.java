@@ -1,10 +1,14 @@
 package Model;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Arrays;
 
 public class Map {
     private boolean[][] map;
     private int height;
     private int width;
+    private PropertyChangeSupport changes;
     
     /**
      * Map Constructor,
@@ -18,12 +22,8 @@ public class Map {
             Arrays.fill(this.map[y], false);
         this.height = height;
         this.width = width;
-            
-            
+        changes = new PropertyChangeSupport( this );           
         }
-//        this.map[2][3]=true;
-//        this.map[4][7]=true;
-//        System.out.print(this.map[3][4]);
     }
     
 
@@ -49,13 +49,8 @@ public class Map {
                ; //map initialised to false 
            }
        }
-//       nextMap.setPixel(1,1);
-//       nextMap.setPixel(1,2);
-//       nextMap.setPixel(2,1);
-//       nextMap.setPixel(2,2);
+       changes.firePropertyChange( "map", this.map, nextMap.map );
        this.map = nextMap.map;
-       
-       
     }
     
     /**
@@ -130,7 +125,6 @@ public class Map {
                 } else {
                     output = '.';
                 }
-                    
                 System.out.print(output);
             }
             System.out.println();
@@ -141,7 +135,6 @@ public class Map {
      * Returns the set status of an individual cell
      */
     public boolean getPixel(int row, int column) {
-        
             return this.map[row][column];
      }
     
@@ -149,7 +142,6 @@ public class Map {
      * sets one individual cell to true
      */
     public void setPixel(int row, int column ) {
-        
         this.map[row][column] = true;
     }
     
@@ -198,8 +190,16 @@ public class Map {
                 }
             }
         }
-        
     }
     
+    public void addPropertyChangeListener( PropertyChangeListener l )
+    {
+      changes.addPropertyChangeListener( l );
+    }
+
+    public void removePropertyChangeListener( PropertyChangeListener l )
+    {
+      changes.removePropertyChangeListener( l );
+    }
 
 }
