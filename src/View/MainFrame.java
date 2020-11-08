@@ -19,7 +19,7 @@ public class MainFrame extends JFrame{
     private void initUI() {
         
         setTitle("Game of Life");
-        setSize(400, 400);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
