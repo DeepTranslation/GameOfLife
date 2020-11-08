@@ -8,7 +8,7 @@ public class Map {
     private boolean[][] map;
     private int height;
     private int width;
-    private PropertyChangeSupport changes;
+    private PropertyChangeSupport mapChanges;
     
     /**
      * Map Constructor,
@@ -22,7 +22,8 @@ public class Map {
             Arrays.fill(this.map[y], false);
         this.height = height;
         this.width = width;
-        changes = new PropertyChangeSupport( this );           
+        mapChanges = new PropertyChangeSupport( this ); 
+        //changes.firePropertyChange( "map", null,this.map);
         }
     }
     
@@ -49,8 +50,10 @@ public class Map {
                ; //map initialised to false 
            }
        }
-       changes.firePropertyChange( "map", this.map, nextMap.map );
+       boolean[][] oldMap = this.map;
        this.map = nextMap.map;
+       mapChanges.firePropertyChange( "map", oldMap, this.map );
+       
     }
     
     /**
@@ -113,23 +116,6 @@ public class Map {
         return height;
     }
     
-    /**
-     * TODO: move into View
-     */
-    public void drawMap() {
-        char output;
-        for (int row = 0; row< getHeight(); row++) {
-            for (int column = 0; column < getWidth(); column++) {
-                if (this.map[row][column]) {
-                     output = 'X';
-                } else {
-                    output = '.';
-                }
-                System.out.print(output);
-            }
-            System.out.println();
-        }
-    }
     
     /**
      * Returns the set status of an individual cell
@@ -143,6 +129,7 @@ public class Map {
      */
     public void setPixel(int row, int column ) {
         this.map[row][column] = true;
+        
     }
     
     /**
@@ -155,6 +142,7 @@ public class Map {
     
     /**
      * gets the whole map as a 2D Array
+     * --- only used for testing ---
      * @return 2D Array of char
      *                  X = cell alive
      *                  . = cell dead
@@ -175,12 +163,12 @@ public class Map {
     
     /**
      * sets the whole map to the parameter values
+     * --- only used for initialising the map  ----
      * @param inputMap = 2D Array
      *                  X = cell alive
      *                  . = cell dead
      */
     public void setMap(char[][] inputMap){
-        
         for (int row = 0; row< getHeight(); row++) {
             for (int column = 0; column < getWidth(); column++) {
                 if (inputMap[row][column]=='X') {
@@ -190,16 +178,49 @@ public class Map {
                 }
             }
         }
+        mapChanges.firePropertyChange( "map", null,this.map);
     }
     
     public void addPropertyChangeListener( PropertyChangeListener l )
     {
-      changes.addPropertyChangeListener( l );
+      mapChanges.addPropertyChangeListener( l );
     }
 
     public void removePropertyChangeListener( PropertyChangeListener l )
     {
-      changes.removePropertyChangeListener( l );
+      mapChanges.removePropertyChangeListener( l );
+    }
+
+
+    public void clearMap() {
+        for (int row = 0; row < this.map.length; row++) {
+            Arrays.fill(this.map[row], false);
+        }
+        mapChanges.firePropertyChange( "map", null,this.map);
+    }
+
+
+    public void randomMap() {
+        for (int row = 0; row < this.map.length; row++) {
+            for (int column = 0; column < this.map.length; column++) {
+               if (Math.random() < 0.5) {
+                   this.setPixel(row , column);
+               }else {
+                   this.clearPixel(row , column);
+               }
+            }
+           
+        }
+        mapChanges.firePropertyChange( "map", null,this.map);
+        
+    }
+    
+    public void randomLinesMap() {
+        for (int y = 0; y < this.map.length; y++) {
+            Arrays.fill(this.map[y], (Math.random() < 0.5));
+        }
+        mapChanges.firePropertyChange( "map", null,this.map);
+        
     }
 
 }
