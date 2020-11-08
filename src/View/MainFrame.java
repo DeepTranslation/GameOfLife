@@ -74,8 +74,12 @@ public class MainFrame extends JFrame{
         controlPanel.add(stopButton,0,2);
 
         add(canvas,BorderLayout.CENTER);
-//        Dimension canvasSize = canvas.getSize();
-//        if (canvasSize.height
+        Dimension canvasSize = canvas.getSize();
+        if (canvasSize.height < canvasSize.width) {
+            canvasSize.setSize(canvasSize.height, canvasSize.height);
+        } else {
+            canvasSize.setSize(canvasSize.width, canvasSize.width);
+        }
         add(controlPanel,BorderLayout.SOUTH);
         setVisible(true);
     }
