@@ -1,7 +1,7 @@
 package View;
 
 public enum colors {
-   
+   // Color source: https://coolors.co/palettes
     MAPBACKGROUND("#9B9B7A"),
     MAPGRIDLINES("#797D62"),
     ORGANISM("#D08C60"),
